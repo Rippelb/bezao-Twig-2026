@@ -1,6 +1,6 @@
 <h1>twig funcionando</h1>
 <hr>
-<p>olá {{nome}}, ta dando bom </p>
+<p>olá {{nome| upper}}, ta dando bom </p>
 <p>
     {%if legal %}
     Você é um cara legal
@@ -15,3 +15,4 @@
         {% endfor %}
     </ul>
 </p>
+<p>{{ poema | nl2br }}</p>
