@@ -1,0 +1,17 @@
+<h1>twig funcionando</h1>
+<hr>
+<p>olá {{nome}}, ta dando bom </p>
+<p>
+    {%if legal %}
+    Você é um cara legal
+    {% else %}
+    Você não é um cara legal
+    {% endif %}
+</p>
+<p>
+    <ul>
+        {% for disc in disciplinas %}
+        <li>{{ disc }}</li>
+        {% endfor %}
+    </ul>
+</p>
