@@ -5,7 +5,25 @@ if($_SERVER["REQUEST_METHOD"] == 'POST' ){
    $estilo = $_POST['estilo'] ?? false;
     if( !$nome || !$estilo ){
         $erro = 'Preencha todos os campos';
+    }else {
+        $ext = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
+        $capa = uniqid().'.'.$ext;
+        move_uploaded_file($_FILES['capa']['tmp_name'], "img/{$capa}");
+        die;
+        print_r($_FILES);
+        require('carregarPDO.php');
+        $dados = $pdo->prepare('INSERT INTO jogos(nome, estilo) VALUES (?, ?)');
+    
+    $dados->bindParam(1, $nome);
+    $dados->bindParam(2, $estilo);
+    $dados->bindParam(3, $capa);
+
+    $dados->execute();
+
+    header('location:jogos.php');
+    die;
     }
+
 };
 require('carregarTwig.php');
 
